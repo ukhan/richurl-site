@@ -1,9 +1,654 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Variables and their transformations • Rich URL – work with information in a format that suits you best</title><link rel=icon href=/favicon.png><link rel=stylesheet href=/css/main.min.3107ae475476da1a13b8ac05223bf482d74260835b396a4fa114fccf2a7d2c3f.css><script defer src=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/js/all.min.js></script><meta property=og:title content="Rich URL"><meta property=og:description content="work with information in a format that suits you best"><meta property=og:image content=https://richurl.madewithlove.in.ua/logo-gray.png><meta property=og:image:width content=128><meta property=og:image:height content=128><script type=application/javascript>var doNotTrack=false;if(!doNotTrack){(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create','UA-51091128-3','auto');ga('send','pageview');}</script></head><body><nav class="navbar is-info is-hidden-tablet"><div class=navbar-brand><div class=navbar-brand><a class=navbar-item href=/en/><img src=/images/logo-white.png>
-<span class=navbar-brand-name>Rich URL</span></a></div><a role=button class=navbar-burger onclick="document.querySelector('.navbar-menu').classList.toggle('is-active')"><span aria-hidden=true></span><span aria-hidden=true></span><span aria-hidden=true></span></a></div><div class="navbar-menu has-background-white-ter"><div class=navbar-start><div class=menu><p class=menu-label>About extension</p><ul class=menu-list><li><a href=/en/>The Purpose</a></li><li><a href=/en/features/>Features</a></li><li><a class=is-active href=/en/variables/>Variables</a></li><li><a href=/en/installation/>Installation</a></li><li><a href=/en/config/>Configuring</a></li><li><a href=/en/usage/>Using</a></li></ul><p class=menu-label>Actions</p><ul class=menu-list><li><a href=/en/actions/>Extension actions</a></li><li><a href=/en/actions/copy/>Copy</a><ul><li><a href=/en/actions/copy/formatted/>Formatted</a></li><li><a href=/en/actions/copy/unformatted/>Unformatted</a></li></ul></li><li><a href=/en/actions/share/>Share</a><ul><li><a href=/en/actions/share/email/>Email</a></li><li><a href=/en/actions/share/facebook/>Facebook</a></li><li><a href=/en/actions/share/twitter/>Twitter</a></li></ul></li></ul><p class=menu-label>Feedback</p><ul class=menu-list><li><a href=/en/faq/>FAQ</a></li><li><a href=/en/feedback/>Contact the author</a></li><li><a href=/en/thanks/>Thank the author</a></li></ul></div></div></div></nav><section class="hero is-info is-bold is-hidden-mobile"><div class=hero-body><div class=container><div class=columns><div class="column is-narrow"><a href=/en/><img src=/images/logo-white.png width=64 height=64></a></div><div class=column><h1 class=title>Rich URL</h1><h2 class=subtitle>work with information in a format that suits you best</h2></div></div></div></div></section><section class="section section-content"><div class=container><div class=columns><div class="column content"><h1 class=title>Variables and their transformations</h1><figure><img src=example.en.png alt="An example of using variables in a copy description"><figcaption><p>An example of using variables in a copy description</p></figcaption></figure><p>The following variables can be used in the extension <a href=/en/actions/>actions</a>:</p><ul><li><code>url</code> – <a href=/en/variables/#page-url>page url</a></li><li><code>title</code> – <a href=/en/variables/#page-title>page title</a></li><li><code>text</code> – <a href=/en/variables/#page-text>page text</a></li><li><code>selected</code> – <a href=/en/variables/#selected-text>selected text</a></li><li><code>dt</code> – <a href=/en/variables/#current-date-time>current date/time</a></li></ul><p>To go to the variable setting (in the process of creating/editing an action), just double click on it.</p><h2 id=page-url>Page URL</h2><p>When using a page address, the following page transformations are available:</p><ol><li><code>unicode</code> – conversion of unicode characters into readable text (when instead of a <code>https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0</code> we get a <code>https://uk.wikipedia.org/wiki/Україна</code>);</li><li><code>clear</code> – removal of marketing and other service marks;</li><li><code>add</code> – adding to the URL of the page its own parameters, which can be useful, for example, when preparing links for partner programs;</li><li><code>bitly</code>, <code>isgd</code>, <code>clck</code> – shortening the address with one of the services <a href=https://bitly.com/>bit.ly</a>, <a href=https://is.gd/>is.gd</a>, <a href=https://clck.ru/>clck.ru</a>.</li></ol><figure><img src=url.en.png alt="Page address conversion" width=400><figcaption><p>Page address conversion</p></figcaption></figure><p>Examples of how the description of a variable and its transformation looks like:</p><ul><li><code>{{ url }}</code> – the page address will be used in its original form;</li><li><code>{{ url | bitly }}</code> – before use, the page address will be shortened using the service <a href=https://bitly.com/>bit.ly</a>;</li><li><code>{{ url | clear | bitly }}</code> – marketing tags will be removed from the address and then it will be shortened using the service <a href=https://bitly.com/>bit.ly</a>.</li></ul><h2 id=page-title>Page Title</h2><p>For the title of the page, it is possible to reduce its length to the desired number of characters, specifying a placeholder for the trimmed part (the default is three dots).</p><figure><img src=title.en.png alt="Page title conversion" width=400><figcaption><p>Page title conversion</p></figcaption></figure><p>Examples:</p><ul><li><code>{{ title }}</code> – the title of the page will be used in its original form;</li><li><code>{{ title | limit:50 }}</code> – the title will be reduced to 50 characters with a three-dot at the end.</li></ul><h2 id=page-text>Page Text</h2><p>Для текста страницы, как и для <a href=/en/variables/#заглавие-страницы>заглавия</a>, доступна возможность сокращения длины текста до нужного количества символов.</p><p>For the text of the page, as for the <a href=/en/variables/#page-title>title</a>, you can reduce the length of the text to the required number of characters.</p><figure><img src=text.en.png alt="Page text conversion features" width=400><figcaption><p>Page text conversion features</p></figcaption></figure><h2 id=selected-text>Selected Text</h2><p>For a variable <code>{{ selected }}</code>, you can:</p><ol><li>Specify what will be used if there is no selected text on the page at the time of action (available: page address, page title, full text of the page).</li><li>Delete line breaks in the selected fragment. Useful, for example, when you select a small text fragment on the border of two paragraphs.</li><li>Reduce the length of the selected fragment to the required number of characters.</li></ol><figure><img src=selected.en.png alt="Using selected text on a page" width=400><figcaption><p>Using selected text on a page</p></figcaption></figure><p>Examples:</p><ul><li><code>{{ selected }}</code> – selected fragment or page title, there is nothing selected on the page;</li><li><code>{{ selected ?? url }}</code> – if there is no selection on the page, the page address will be used;</li><li><code>{{ selected ?? url | rmbr }}</code> – line breaks will be removed from the selected fragment (ReMove BReaks)</li></ul><h2 id=current-date-time>Current date/time</h2><figure><img src=dt.en.png alt="Using the current date and time" width=400><figcaption><p>Using the current date and time</p></figcaption></figure><p>Examples:</p><ul><li><code>{{ dt }}</code> – current date and time according to your browser settings;</li><li><code>{{ dt:date }}</code> – date only;</li><li><code>{{ dt:time }}</code> – time only;</li><li><code>{{ dt:MM/DD/YYYY (dddd):en-us }}</code> – date in a given format <code>07/07/2019 (Sunday)</code>.</li></ul><div id=disqus_thread></div><script type=application/javascript>var disqus_config=function(){};(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById('disqus_thread').innerHTML='Disqus comments not available by default when the website is previewed locally.';return;}
-var d=document,s=d.createElement('script');s.async=true;s.src='//'+"rich-url-extension"+'.disqus.com/embed.js';s.setAttribute('data-timestamp',+new Date());(d.head||d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><div class="column is-narrow is-hidden-mobile"><div class=menu><p class=menu-label>About extension</p><ul class=menu-list><li><a href=/en/>The Purpose</a></li><li><a href=/en/features/>Features</a></li><li><a class=is-active href=/en/variables/>Variables</a></li><li><a href=/en/installation/>Installation</a></li><li><a href=/en/config/>Configuring</a></li><li><a href=/en/usage/>Using</a></li></ul><p class=menu-label>Actions</p><ul class=menu-list><li><a href=/en/actions/>Extension actions</a></li><li><a href=/en/actions/copy/>Copy</a><ul><li><a href=/en/actions/copy/formatted/>Formatted</a></li><li><a href=/en/actions/copy/unformatted/>Unformatted</a></li></ul></li><li><a href=/en/actions/share/>Share</a><ul><li><a href=/en/actions/share/email/>Email</a></li><li><a href=/en/actions/share/facebook/>Facebook</a></li><li><a href=/en/actions/share/twitter/>Twitter</a></li></ul></li></ul><p class=menu-label>Feedback</p><ul class=menu-list><li><a href=/en/faq/>FAQ</a></li><li><a href=/en/feedback/>Contact the author</a></li><li><a href=/en/thanks/>Thank the author</a></li></ul></div><div class=badges><p><a href=https://chrome.google.com/webstore/detail/rich-url/bkjdcppkdgccnhjibfhlhmeiafnjfamk target=_blank><img src=/images/ChromeWebStore_BadgeWBorder_v2_206x58.png alt="Available in the Chrome Web Store"></a></p><p><a href="https://www.producthunt.com/posts/rich-url?utm_source=badge-featured&utm_medium=badge" target=_blank><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=150558&theme=light" alt="Rich URL - Copy, save and share information in a convenient format. | Product Hunt Embed" style=width:206px;height:58px width=206px height=58px></a></p><p class=patreon-badge-wrapper><a href="https://www.patreon.com/bePatron?u=16283338" data-patreon-widget-type=become-patron-button>Become a Patron!</a>
-<script async src=https://c6.patreon.com/becomePatronButton.bundle.js></script></p></div></div></div></div></section><footer class=footer><div class=container><div class="columns is-mobile"><div class="column made-with">Made with ❤️ in
-<img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAuSURBVDhPYxgGQHHa5ygg/k8mjho1AGjAn+umUX9vmP4nB4P0jhoANGCoAwYGABPEurh8awULAAAAAElFTkSuQmCC class=ua>&nbsp;<a href=https://en.wikipedia.org/wiki/Ukraine target=_blank>Ukraine</a></div><div class="column has-text-right"><div class="dropdown is-up" onclick="this.classList.toggle('is-active')"><div class=dropdown-trigger><button class=button>
-<span class="icon is-small"><i class="fas fa-globe"></i></span><span>English</span>
-<span class="icon is-small"><i class="fas fa-angle-down"></i></span></button></div><div class=dropdown-menu id=dropdown-menu><div class=dropdown-content><a href=https://richurl.madewithlove.in.ua/en/variables/ class="dropdown-item is-active">English</a>
-<a href=https://richurl.madewithlove.in.ua/uk/variables/ class=dropdown-item>Українська</a>
-<a href=https://richurl.madewithlove.in.ua/ru/variables/ class=dropdown-item>Русский</a></div></div></div></div></div></div></footer></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>
+    
+    Variables and their transformations • Rich URL – work with information in a format that suits you best
+    
+  </title>
+  <link rel="icon" href="/favicon.png" />
+
+  
+  
+  <link rel="stylesheet" href="/css/main.min.3107ae475476da1a13b8ac05223bf482d74260835b396a4fa114fccf2a7d2c3f.css">
+  
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/js/all.min.js"></script>
+
+  <meta property="og:title" content="Rich URL" />
+  <meta property="og:description" content="work with information in a format that suits you best" />
+  <meta property="og:image" content="https://richurl.madewithlove.in.ua/logo-gray.png" />
+  <meta property="og:image:width" content="128" />
+  <meta property="og:image:height" content="128" />
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-51091128-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+  
+</head>
+
+<body>
+  <nav class="navbar is-info is-hidden-tablet">
+    <div class="navbar-brand">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/en/">
+          <img src="/images/logo-white.png">
+          <span class="navbar-brand-name">
+            Rich URL
+          </span>
+        </a>
+      </div>
+
+      <a role="button" class="navbar-burger"
+        onclick="document.querySelector('.navbar-menu').classList.toggle('is-active')">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-menu has-background-white-ter">
+      <div class="navbar-start">
+        <div class="menu">
+  
+
+  
+  
+  
+  
+
+  <p class="menu-label">
+    About extension
+  </p>
+  <ul class="menu-list">
+    
+    <li>
+      <a  href="/en/">
+        The Purpose
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/features/">
+        Features
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  class="is-active"  href="/en/variables/">
+        Variables
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/installation/">
+        Installation
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/config/">
+        Configuring
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/usage/">
+        Using
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+  
+  
+  
+
+  <p class="menu-label">
+    Actions
+  </p>
+  <ul class="menu-list">
+    
+    <li>
+      <a  href="/en/actions/">
+        Extension actions
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/actions/copy/">
+        Copy
+      </a>
+      
+      <ul>
+        
+        <li>
+          <a  href="/en/actions/copy/formatted/">
+            Formatted
+          </a>
+        </li>
+        
+        <li>
+          <a  href="/en/actions/copy/unformatted/">
+            Unformatted
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/actions/share/">
+        Share
+      </a>
+      
+      <ul>
+        
+        <li>
+          <a  href="/en/actions/share/email/">
+            Email
+          </a>
+        </li>
+        
+        <li>
+          <a  href="/en/actions/share/facebook/">
+            Facebook
+          </a>
+        </li>
+        
+        <li>
+          <a  href="/en/actions/share/twitter/">
+            Twitter
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+  </ul>
+  
+  
+  
+  
+
+  <p class="menu-label">
+    Feedback
+  </p>
+  <ul class="menu-list">
+    
+    <li>
+      <a  href="/en/faq/">
+        FAQ
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/feedback/">
+        Contact the author
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/thanks/">
+        Thank the author
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+</div>
+
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero is-info is-bold is-hidden-mobile">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-narrow">
+            <a href="/en/">
+              <img src="/images/logo-white.png" width="64" height="64">
+            </a>
+          </div>
+          <div class="column">
+            <h1 class="title">
+              Rich URL
+            </h1>
+            <h2 class="subtitle">
+              work with information in a format that suits you best
+            </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-content">
+    <div class="container">
+      <div class="columns">
+        <div class="column content">
+          
+<h1 class="title">Variables and their transformations</h1>
+
+
+<figure>
+    <img src="example.en.png"
+         alt="An example of using variables in a copy description"/> <figcaption>
+            <p>An example of using variables in a copy description</p>
+        </figcaption>
+</figure>
+
+
+<p>The following variables can be used in the extension <a href="/en/actions/">actions</a>:</p>
+
+<ul>
+<li><code>url</code> – <a href="/en/variables/#page-url">page url</a></li>
+<li><code>title</code> – <a href="/en/variables/#page-title">page title</a></li>
+<li><code>text</code> – <a href="/en/variables/#page-text">page text</a></li>
+<li><code>selected</code> – <a href="/en/variables/#selected-text">selected text</a></li>
+<li><code>dt</code> – <a href="/en/variables/#current-date-time">current date/time</a></li>
+</ul>
+
+<p>To go to the variable setting (in the process of creating/editing an action), just double click on it.</p>
+
+<h2 id="page-url">Page URL</h2>
+
+<p>When using a page address, the following page transformations are available:</p>
+
+<ol>
+<li><code>unicode</code> – conversion of unicode characters into readable text (when instead of a <code>https://uk.wikipedia.org/wiki/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D0%B0</code> we get a <code>https://uk.wikipedia.org/wiki/Україна</code>);</li>
+<li><code>clear</code> – removal of marketing and other service marks;</li>
+<li><code>add</code> – adding to the URL of the page its own parameters, which can be useful, for example, when preparing links for partner programs;</li>
+<li><code>bitly</code>, <code>isgd</code>, <code>clck</code> – shortening the address with one of the services <a href="https://bitly.com/">bit.ly</a>, <a href="https://is.gd/">is.gd</a>, <a href="https://clck.ru/">clck.ru</a>.</li>
+</ol>
+
+<figure>
+    <img src="url.en.png"
+         alt="Page address conversion" width="400"/> <figcaption>
+            <p>Page address conversion</p>
+        </figcaption>
+</figure>
+
+
+<p>Examples of how the description of a variable and its transformation looks like:</p>
+
+<ul>
+<li><code>{{ url }}</code> – the page address will be used in its original form;</li>
+<li><code>{{ url | bitly }}</code> – before use, the page address will be shortened using the service <a href="https://bitly.com/">bit.ly</a>;</li>
+<li><code>{{ url | clear | bitly }}</code> – marketing tags will be removed from the address and then it will be shortened using the service <a href="https://bitly.com/">bit.ly</a>.</li>
+</ul>
+
+<h2 id="page-title">Page Title</h2>
+
+<p>For the title of the page, it is possible to reduce its length to the desired number of characters, specifying a placeholder for the trimmed part (the default is three dots).</p>
+
+<figure>
+    <img src="title.en.png"
+         alt="Page title conversion" width="400"/> <figcaption>
+            <p>Page title conversion</p>
+        </figcaption>
+</figure>
+
+
+<p>Examples:</p>
+
+<ul>
+<li><code>{{ title }}</code> – the title of the page will be used in its original form;</li>
+<li><code>{{ title | limit:50 }}</code> – the title will be reduced to 50 characters with a three-dot at the end.</li>
+</ul>
+
+<h2 id="page-text">Page Text</h2>
+
+<p>Для текста страницы, как и для <a href="/en/variables/#заглавие-страницы">заглавия</a>, доступна возможность сокращения длины текста до нужного количества символов.</p>
+
+<p>For the text of the page, as for the <a href="/en/variables/#page-title">title</a>, you can reduce the length of the text to the required number of characters.</p>
+
+<figure>
+    <img src="text.en.png"
+         alt="Page text conversion features" width="400"/> <figcaption>
+            <p>Page text conversion features</p>
+        </figcaption>
+</figure>
+
+
+<h2 id="selected-text">Selected Text</h2>
+
+<p>For a variable <code>{{ selected }}</code>, you can:</p>
+
+<ol>
+<li>Specify what will be used if there is no selected text on the page at the time of action (available: page address, page title, full text of the page).</li>
+<li>Delete line breaks in the selected fragment. Useful, for example, when you select a small text fragment on the border of two paragraphs.</li>
+<li>Reduce the length of the selected fragment to the required number of characters.</li>
+</ol>
+
+<figure>
+    <img src="selected.en.png"
+         alt="Using selected text on a page" width="400"/> <figcaption>
+            <p>Using selected text on a page</p>
+        </figcaption>
+</figure>
+
+
+<p>Examples:</p>
+
+<ul>
+<li><code>{{ selected }}</code> – selected fragment or page title, there is nothing selected on the page;</li>
+<li><code>{{ selected ?? url }}</code> – if there is no selection on the page, the page address will be used;</li>
+<li><code>{{ selected ?? url | rmbr }}</code> – line breaks will be removed from the selected fragment (ReMove BReaks)</li>
+</ul>
+
+<h2 id="current-date-time">Current date/time</h2>
+
+<figure>
+    <img src="dt.en.png"
+         alt="Using the current date and time" width="400"/> <figcaption>
+            <p>Using the current date and time</p>
+        </figcaption>
+</figure>
+
+
+<p>Examples:</p>
+
+<ul>
+<li><code>{{ dt }}</code> – current date and time according to your browser settings;</li>
+<li><code>{{ dt:date }}</code> – date only;</li>
+<li><code>{{ dt:time }}</code> – time only;</li>
+<li><code>{{ dt:MM/DD/YYYY (dddd):en-us }}</code> – date in a given format <code>07/07/2019 (Sunday)</code>.</li>
+</ul>
+
+
+
+          
+          <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "rich-url-extension" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          
+        </div>
+        <div class="column is-narrow is-hidden-mobile">
+          <div class="menu">
+  
+
+  
+  
+  
+  
+
+  <p class="menu-label">
+    About extension
+  </p>
+  <ul class="menu-list">
+    
+    <li>
+      <a  href="/en/">
+        The Purpose
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/features/">
+        Features
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  class="is-active"  href="/en/variables/">
+        Variables
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/installation/">
+        Installation
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/config/">
+        Configuring
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/usage/">
+        Using
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+  
+  
+  
+
+  <p class="menu-label">
+    Actions
+  </p>
+  <ul class="menu-list">
+    
+    <li>
+      <a  href="/en/actions/">
+        Extension actions
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/actions/copy/">
+        Copy
+      </a>
+      
+      <ul>
+        
+        <li>
+          <a  href="/en/actions/copy/formatted/">
+            Formatted
+          </a>
+        </li>
+        
+        <li>
+          <a  href="/en/actions/copy/unformatted/">
+            Unformatted
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/actions/share/">
+        Share
+      </a>
+      
+      <ul>
+        
+        <li>
+          <a  href="/en/actions/share/email/">
+            Email
+          </a>
+        </li>
+        
+        <li>
+          <a  href="/en/actions/share/facebook/">
+            Facebook
+          </a>
+        </li>
+        
+        <li>
+          <a  href="/en/actions/share/twitter/">
+            Twitter
+          </a>
+        </li>
+        
+      </ul>
+      
+    </li>
+    
+  </ul>
+  
+  
+  
+  
+
+  <p class="menu-label">
+    Feedback
+  </p>
+  <ul class="menu-list">
+    
+    <li>
+      <a  href="/en/faq/">
+        FAQ
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/feedback/">
+        Contact the author
+      </a>
+      
+    </li>
+    
+    <li>
+      <a  href="/en/thanks/">
+        Thank the author
+      </a>
+      
+    </li>
+    
+  </ul>
+  
+</div>
+
+          <div class="badges">
+  <p>
+    <a href="https://chrome.google.com/webstore/detail/rich-url/bkjdcppkdgccnhjibfhlhmeiafnjfamk" target="_blank">
+      <img src="/images/ChromeWebStore_BadgeWBorder_v2_206x58.png" alt="Available in the Chrome Web Store">
+    </a>
+  </p>
+  <p>
+    <a href="https://www.producthunt.com/posts/rich-url?utm_source=badge-featured&utm_medium=badge" target="_blank">
+      <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=150558&theme=light"
+        alt="Rich URL - Copy, save and share information in a convenient format. | Product Hunt Embed"
+        style="width: 206px; height: 58px;" width="206px" height="58px" />
+    </a>
+  </p>
+  <p class="patreon-badge-wrapper">
+    <a href="https://www.patreon.com/bePatron?u=16283338" data-patreon-widget-type="become-patron-button">
+      Become a Patron!
+    </a>
+    <script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+  </p>
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-mobile">
+      <div class="column made-with">
+        
+        Made with ❤️ in
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAuSURBVDhPYxgGQHHa5ygg/k8mjho1AGjAn+umUX9vmP4nB4P0jhoANGCoAwYGABPEurh8awULAAAAAElFTkSuQmCC"
+          class="ua">&nbsp;<a href="https://en.wikipedia.org/wiki/Ukraine" target="_blank">Ukraine</a>
+        
+      </div>
+      <div class="column has-text-right">
+        <div class="dropdown is-up" onclick="this.classList.toggle('is-active')">
+  <div class="dropdown-trigger">
+    <button class="button">
+      <span class="icon is-small">
+        <i class="fas fa-globe"></i>
+      </span>
+      <span>English</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu">
+    <div class="dropdown-content">
+      
+      <a href="https://richurl.madewithlove.in.ua/en/variables/"
+        class="dropdown-item is-active">
+        English
+      </a>
+      
+      <a href="https://richurl.madewithlove.in.ua/uk/variables/"
+        class="dropdown-item">
+        Українська
+      </a>
+      
+      <a href="https://richurl.madewithlove.in.ua/ru/variables/"
+        class="dropdown-item">
+        Русский
+      </a>
+      
+    </div>
+  </div>
+</div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>
