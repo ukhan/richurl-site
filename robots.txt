@@ -1,0 +1,20 @@
+User-agent: *
+Disallow: /en/debriefing/
+Disallow: /en/debriefing/thank-you/
+Disallow: /uk/debriefing/
+Disallow: /uk/debriefing/thank-you/
+Disallow: /ru/debriefing/
+Disallow: /ru/debriefing/thank-you/
+Disallow: /en/404/
+Disallow: /uk/404/
+Disallow: /ru/404/
+Disallow: /en/feedback/
+Disallow: /uk/feedback/
+Disallow: /ru/feedback/
+Disallow: /en/thank-you/
+Disallow: /uk/thank-you/
+Disallow: /ru/thank-you/
+
+Sitemap: https://richurl.madewithlove.in.ua/en/sitemap.xml
+Sitemap: https://richurl.madewithlove.in.ua/uk/sitemap.xml
+Sitemap: https://richurl.madewithlove.in.ua/ru/sitemap.xml
