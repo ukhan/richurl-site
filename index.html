@@ -6,11 +6,13 @@
     const defaultLanguage = 'en';
     const supportedLanguages = ['uk', 'en', 'ru'];
 
-    var userLanguage = window.navigator.userLanguage || window.navigator.language;
+    let userLanguage = window.navigator.userLanguage || window.navigator.language;
+    if (userLanguage.includes('-')) {
+      userLanguage = userLanguage.slice(0, userLanguage.indexOf('-'));
+    }
 
-    if (supportedLanguages.indexOf(userLanguage) === -1) userLanguage = defaultLanguage;
-    
-    window.location.replace('https://richurl.madewithlove.in.ua/' + userLanguage);
+    if (supportedLanguages.indexOf(userLanguage) === -1) userLanguage = defaultLanguage;        
+    window.location.replace('/' + userLanguage);
   </script>
 </head>
 <body></body>
