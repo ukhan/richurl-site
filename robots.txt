@@ -3,4 +3,3 @@ Allow: /
 
 Sitemap: https://richurl.madewithlove.in.ua/en/sitemap.xml
 Sitemap: https://richurl.madewithlove.in.ua/uk/sitemap.xml
-Sitemap: https://richurl.madewithlove.in.ua/ru/sitemap.xml
